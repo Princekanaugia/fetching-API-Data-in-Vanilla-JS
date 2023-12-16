@@ -9,43 +9,34 @@
     margin : auto;
 }
 
-.grid-container > div  {
+.grid-container > li  {
     border : 1px solid black;
     border-radius : 5px;
     text-align : center;
+    height: 20px;
 }
 
 .heading {
-    display : flex;
     max-width : 50%;
     padding : 5px;
     margin : auto;
 }
 
-.heading > div  {
+.heading > li  {
     border : 1px solid black;
     border-radius : 5px;
     text-align : center;
 }
 
-.item1 {
-    width : 50px;
-    margin-rigth : 6px;
-
-}
-.item2 {
-    width : 100px;
-    margin-rigth : 6px;
-}
-.item3 {
-    width : 600px;
-    margin-rigth : 6px;
-}
-.item4 {
-    width : 100px;
-    margin-rigth : 6px;
-}
-
-#todo-list {
+ul {
     list-style-type : none;
+}
+
+.flex {
+    display : grid;
+    max-width : 50%;
+    grid : 20px / 150px 150px 150px 200px;
+    grid-gap : 6px;
+    padding : 5px;
+    margin : auto;
 }
