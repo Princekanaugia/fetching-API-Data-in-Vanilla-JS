@@ -82,7 +82,10 @@ let showCompleted = (link) => {
     })
     .catch(error => console.error('Error fetching todos:', error));
 }
-
+document.addEventListener("DOMContentLoaded", () => {
+    // Assuming you want to fetch all data initially
+    fetchAll(url);
+});
 document.getElementById("btn-fetch").addEventListener("click",() => fetchAll(url)) 
 document.getElementById("btn-pending").addEventListener("click",() => showPending(url))
 document.getElementById("btn-completed").addEventListener("click",() => showCompleted(url))

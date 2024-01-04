@@ -2,10 +2,9 @@
 
 .grid-container {
     display : grid;
-    max-width : 50%;
     grid : 20px / 50px 100px 600px 100px;
     grid-gap : 6px;
-    padding : 5px;
+    padding : 6px;
     margin : auto;
 }
 
@@ -38,5 +37,12 @@ ul {
     grid : 20px / 150px 150px 150px 200px;
     grid-gap : 6px;
     padding : 5px;
+    margin : auto;
+}
+
+#todoList {
+    border : 1px solid black;
+    border-radius : 5px;
+    max-width : 880px;
     margin : auto;
 }
