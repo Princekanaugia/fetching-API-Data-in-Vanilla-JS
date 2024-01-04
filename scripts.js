@@ -7,6 +7,39 @@ function clearList() {
         ul.removeChild(childNodes[i]);
     }
 }
+function color(value) {
+    if (value) {
+        return "green";                
+    }
+    else {
+        return "red";
+    }
+    
+}
+
+function listRendering(todo) {
+    const id = document.createElement('li');
+    const userId = document.createElement('li');
+    const title = document.createElement('li');
+    const stat = document.createElement('li');
+            
+    let colr = color(todo.completed);
+
+    id.setAttribute("style",`background-color : ${colr}`);
+    userId.setAttribute("style",`background-color : ${colr}`);
+    title.setAttribute("style",`background-color : ${colr}`);
+    stat.setAttribute("style",`background-color : ${colr}`);
+            
+    ul.append(id)
+    id.innerText = `${todo.id}`;
+    ul.append(userId)
+    userId.innerText = `${todo.userId}`;
+    ul.append(title)
+    title.innerText = `${todo.title}`;
+    ul.append(stat)
+    todo.completed ? stat.innerText = `Completed` : stat.innerText = `Pending...`;
+}
+
 let fetchAll = (link) => {
     clearList();
     fetch(link)           //api for the get request
@@ -14,81 +47,21 @@ let fetchAll = (link) => {
     .then(todos => {
         // Iterate through todos and append to the list
         todos.forEach(todo => {
-            const id = document.createElement('li');
-            const userId = document.createElement('li');
-            const title = document.createElement('li');
-            const stat = document.createElement('li');
-            
-            function color(value) {
-                if (value) {
-                    return "green";                
-                }
-                else {
-                    return "red";
-                }
-                
-            }
-            let colr = color(todo.completed);
-
-            id.setAttribute("style",`background-color : ${colr}`);
-            userId.setAttribute("style",`background-color : ${colr}`);
-            title.setAttribute("style",`background-color : ${colr}`);
-            stat.setAttribute("style",`background-color : ${colr}`);
-            
-            function fetchAll() {}
-            
-            ul.append(id)
-            id.innerText = `${todo.id}`;
-            userId.innerText = `${todo.userId}`;
-            ul.append(userId)
-            title.innerText = `${todo.title}`;
-            ul.append(title)
-            todo.completed ? stat.innerText = `Completed` : stat.innerText = `Pending...`;
-            ul.append(stat) 
+            listRendering(todo);
         });
     })
     .catch(error => console.error('Error fetching todos:', error));
 }
 
 let showPending = (link) => {
+    clearList();
     fetch(link)           //api for the get request
     .then(response => response.json())
     .then(todos => {
         // Iterate through todos and append to the list with pending stat
-        clearList();
         todos.forEach(todo => {
             if (!todo.completed) {
-                const id = document.createElement('li');
-                const userId = document.createElement('li');
-                const title = document.createElement('li');
-                const stat = document.createElement('li');
-                
-                function color(value) {
-                    if (value) {
-                        return "green";                
-                    }
-                    else {
-                        return "red";
-                    }
-                    
-                }
-                let colr = color(todo.completed);
-    
-                id.setAttribute("style",`background-color : ${colr}`);
-                userId.setAttribute("style",`background-color : ${colr}`);
-                title.setAttribute("style",`background-color : ${colr}`);
-                stat.setAttribute("style",`background-color : ${colr}`);
-                
-                function fetchAll() {}
-                
-                ul.append(id)
-                id.innerText = `${todo.id}`;
-                userId.innerText = `${todo.userId}`;
-                ul.append(userId)
-                title.innerText = `${todo.title}`;
-                ul.append(title)
-                todo.completed ? stat.innerText = `Completed` : stat.innerText = `Pending...`;
-                ul.append(stat) 
+                listRendering(todo);
             }
         });
     })
@@ -103,37 +76,7 @@ let showCompleted = (link) => {
         // Iterate through todos and append to the list with completed stat
         todos.forEach(todo => {
             if (todo.completed) {
-                const id = document.createElement('li');
-                const userId = document.createElement('li');
-                const title = document.createElement('li');
-                const stat = document.createElement('li');
-                
-                function color(value) {
-                    if (value) {
-                        return "green";                
-                    }
-                    else {
-                        return "red";
-                    }
-                    
-                }
-                let colr = color(todo.completed);
-    
-                id.setAttribute("style",`background-color : ${colr}`);
-                userId.setAttribute("style",`background-color : ${colr}`);
-                title.setAttribute("style",`background-color : ${colr}`);
-                stat.setAttribute("style",`background-color : ${colr}`);
-                
-                function fetchAll() {}
-                
-                ul.append(id)
-                id.innerText = `${todo.id}`;
-                userId.innerText = `${todo.userId}`;
-                ul.append(userId)
-                title.innerText = `${todo.title}`;
-                ul.append(title)
-                todo.completed ? stat.innerText = `Completed` : stat.innerText = `Pending...`;
-                ul.append(stat) 
+                listRendering(todo);
             }
         });
     })
